@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://420kiy3asl1a"]
+
+[ext_resource type="Script" uid="uid://caw4dqja7qrlo" path="res://scripts/tile_manager.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://b1c7xmq7a7wow" path="res://scenes/level_manager.gd" id="4_jyhfs"]
+
+[node name="Main" type="Node2D" unique_id=1992329022]
+
+[node name="TileManager" type="Node" parent="." unique_id=1408679997]
+script = ExtResource("3_sugp2")
+
+[node name="LevelManager" type="Node" parent="." unique_id=727439022]
+script = ExtResource("4_jyhfs")

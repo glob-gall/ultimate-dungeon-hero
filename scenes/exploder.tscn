@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://dhxvu3mfwb1l8"]
+
+[ext_resource type="Texture2D" uid="uid://mof053oarhw7" path="res://assets/enemies/creeper.png" id="1_13rpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvaxj"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhnos"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv73j"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au24i"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_105en"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tpp0"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_impdb"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1ew2"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h653f"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yftie"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faa4s"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1ibe"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82i1u"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pvc7"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve03s"]
+atlas = ExtResource("1_13rpn")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t53qn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvaxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhnos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv73j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au24i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_105en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tpp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_impdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1ew2")
+}],
+"loop": 1,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h653f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yftie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faa4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1ibe")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82i1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pvc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve03s")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t53qn"]
+size = Vector2(18, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t53qn"]
+radius = 17.0
+
+[node name="Exploder" type="CharacterBody2D" unique_id=496495142]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=101813436]
+sprite_frames = SubResource("SpriteFrames_t53qn")
+animation = &"die"
+frame = 7
+frame_progress = 0.5909114
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=893776533]
+shape = SubResource("RectangleShape2D_t53qn")
+
+[node name="Exposion" type="Area2D" parent="." unique_id=1338790688]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exposion" unique_id=1506295029]
+shape = SubResource("CircleShape2D_t53qn")

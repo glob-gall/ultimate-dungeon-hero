@@ -1,14 +1,13 @@
 class_name TileManager
 extends Node
 
+@onready var player: Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
+	player = get_tree().get_first_node_in_group("player")
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass	
-	#var current_tile = local_to_map(to_local(player.get_step_position()))
-	#print(current_tile)
+	if !player:
+		return

@@ -3,12 +3,13 @@ extends Node2D
 
 signal level_change_request(target_level_number: int)
 @onready var player: Player = $Player
-
+@onready var map:LevelMap = $map
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for door:Door in find_children("*","Door",true,false):
 		door.door_entered.connect(_on_door_entered)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,3 +28,9 @@ func place_player_at_door(door_id:int) -> void:
 			player.global_position = door.get_spawn_position()
 			return
 	
+func get_player_current_tile():
+		var player_position = player.get_step_position()
+		
+		if map:
+			return map.get_tile(player_position)
+		push_warning('MAP NOT FOUND')

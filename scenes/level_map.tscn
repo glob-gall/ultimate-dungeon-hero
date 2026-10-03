@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dh6s656t338ik"]
+
+[ext_resource type="Script" uid="uid://rawod63w06lu" path="res://scripts/level_map.gd" id="1_uex8f"]
+
+[node name="LevelMap" type="TileMapLayer" unique_id=1962639494]
+script = ExtResource("1_uex8f")

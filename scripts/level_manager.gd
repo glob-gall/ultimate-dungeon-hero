@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	get_current_tile()
 
 func render_level():
 	if current_level:
@@ -44,3 +44,7 @@ func _on_level_change_requested(target_level: int, target_door_id:int) -> void:
 	print("MANAGER _on_level_change_requested " + str(target_level)+"  " + str(target_door_id))
 	# deferred, because we're inside a physics callback (body_entered)
 	call_deferred("set_level", target_level,target_door_id)
+
+func get_current_tile():
+	var current_tile = current_level.get_player_current_tile()
+	print(current_tile)

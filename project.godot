@@ -56,6 +56,7 @@ down={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Ambient"
+2d_physics/layer_4="Items"
 
 [physics]
 

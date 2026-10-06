@@ -35,6 +35,7 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -16, 8, -16, 8, 8, -8, 8)
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:2/0 = 0
@@ -76,10 +77,16 @@ tile_set = SubResource("TileSet_t53qn")
 script = ExtResource("4_sk5k4")
 
 [node name="Player" parent="." unique_id=1608034275 instance=ExtResource("3_nsrm0")]
-position = Vector2(80, 71.666664)
+position = Vector2(115.66667, 69.666664)
 
 [node name="Door" parent="." unique_id=1890806595 instance=ExtResource("4_x42e6")]
-position = Vector2(400.6667, 48.333332)
+position = Vector2(401.33334, 48.333332)
 door_id = 1
 target_door_id = 2
 target_level_number = 2
+
+[node name="Door2" parent="." unique_id=344932823 instance=ExtResource("4_x42e6")]
+position = Vector2(79.33333, 49.33333)
+door_id = 2
+target_door_id = 1
+target_level_number = 3

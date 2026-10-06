@@ -250,7 +250,10 @@ animations = [{
 size = Vector2(15.999999, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g85n4"]
-size = Vector2(18, 4)
+size = Vector2(6, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0abih"]
+size = Vector2(18, 13)
 
 [node name="Player" type="CharacterBody2D" unique_id=1608034275 groups=["player"]]
 z_index = 10
@@ -274,3 +277,7 @@ shape = SubResource("RectangleShape2D_g85n4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=977301704]
 position_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1252501622]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_0abih")

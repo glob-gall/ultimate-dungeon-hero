@@ -3,8 +3,10 @@ extends Node
 
 @onready var main: Node2D = $".."
 
+signal level_change()
+
 const BASE_LEVEL_PATH := "res://scenes/levels/level_" # 1.tscn
-const MAX_LEVEL := 2
+#const MAX_LEVEL := 3
 var current_level_number: int
 var current_level: Level
 
@@ -16,7 +18,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	get_current_tile()
+	pass
 
 func render_level():
 	if current_level:
@@ -38,6 +40,7 @@ func set_level(level:int,door_id:int):
 	current_level_number = level
 	player_spawn_id = door_id
 	render_level()
+	level_change.emit()
 
 
 func _on_level_change_requested(target_level: int, target_door_id:int) -> void:
@@ -45,6 +48,5 @@ func _on_level_change_requested(target_level: int, target_door_id:int) -> void:
 	# deferred, because we're inside a physics callback (body_entered)
 	call_deferred("set_level", target_level,target_door_id)
 
-func get_current_tile():
-	var current_tile = current_level.get_player_current_tile()
-	print(current_tile)
+func get_current_tile() -> Vector2i:
+	return current_level.get_player_current_tile()

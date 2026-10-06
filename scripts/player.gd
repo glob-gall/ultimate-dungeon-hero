@@ -42,5 +42,4 @@ func _play_animation(dir:String):
 		animated_sprite_2d.play(current_action+"_"+dir)
 
 func get_step_position() -> Vector2:
-	var step_position = step.global_position
-	return step_position
+	return Vector2i(step.global_position)

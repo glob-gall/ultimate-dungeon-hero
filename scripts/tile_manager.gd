@@ -18,7 +18,6 @@ func check_floor() -> void:
 	current_tile = level_manager.get_current_tile()
 	
 	if last_tile and current_tile != last_tile:
-		print("tile change")
 		level_manager.current_level.map.replace_tile(last_tile)
 	
 	last_tile = current_tile

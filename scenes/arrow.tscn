@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ki0odrw5vh6j"]
+
+[ext_resource type="Script" uid="uid://dajctecqjgy2m" path="res://scenes/arrow.gd" id="1_23jat"]
+[ext_resource type="Texture2D" uid="uid://blsdr3adbghq8" path="res://assets/arrow.png" id="1_umosx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g85n4"]
+size = Vector2(12.666667, 0.6666667)
+
+[node name="Arrow" type="Area2D" unique_id=1478122885 groups=["arrow"]]
+scale = Vector2(3, 3)
+collision_layer = 8
+collision_mask = 19
+script = ExtResource("1_23jat")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1637995153]
+rotation = -1.5707964
+texture = ExtResource("1_umosx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1445434339]
+position = Vector2(0.6666665, 0.33333334)
+shape = SubResource("RectangleShape2D_g85n4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

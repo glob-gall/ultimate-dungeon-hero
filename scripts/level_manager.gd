@@ -21,6 +21,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func render_level():
+	get_tree().call_group("arrow","queue_free") # remove all arrows
 	if current_level:
 		current_level.queue_free()
 		current_level = null

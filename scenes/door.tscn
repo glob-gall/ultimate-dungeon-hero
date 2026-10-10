@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bbenfgcfbfixp" path="res://scripts/door.gd" id="1_hpvv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t53qn"]
-size = Vector2(30, 34)
+size = Vector2(6, 34)
 
 [node name="Door" type="Area2D" unique_id=1890806595]
 script = ExtResource("1_hpvv5")

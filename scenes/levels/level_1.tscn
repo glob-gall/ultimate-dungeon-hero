@@ -15,7 +15,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_g85n4"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 4
+physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_xg61l")
 
@@ -77,7 +77,7 @@ tile_set = SubResource("TileSet_t53qn")
 script = ExtResource("4_sk5k4")
 
 [node name="Player" parent="." unique_id=1608034275 instance=ExtResource("3_nsrm0")]
-position = Vector2(115.66667, 69.666664)
+position = Vector2(111, 66.333336)
 
 [node name="Door" parent="." unique_id=1890806595 instance=ExtResource("4_x42e6")]
 position = Vector2(401.33334, 48.333332)

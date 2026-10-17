@@ -9,5 +9,7 @@ func _ready() -> void:
 	level_manager.level_change.connect(tile_manager.level_changed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("reset"):
+		print("reset")
+		level_manager.reset_level()

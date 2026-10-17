@@ -330,7 +330,7 @@ size = Vector2(18, 13)
 [node name="Player" type="CharacterBody2D" unique_id=1608034275 groups=["player"]]
 z_index = 10
 y_sort_enabled = true
-collision_mask = 23
+collision_mask = 21
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=442836406]
@@ -358,6 +358,6 @@ position = Vector2(0, 11.5)
 shape = SubResource("RectangleShape2D_0abih")
 
 [node name="ArrowMarker" type="Marker2D" parent="." unique_id=1211728577]
-position = Vector2(14, 4)
+position = Vector2(-18, 5)
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

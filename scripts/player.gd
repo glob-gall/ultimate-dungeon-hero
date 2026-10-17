@@ -29,9 +29,6 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 	
-
-		
-	
 	_handle_moviment()
 	_play_animation(direction_name)
 	move_and_slide()
@@ -85,10 +82,10 @@ func shoot() -> void:
 	match direction_name:
 		"right":
 			arrow_instance.setup(Vector2.RIGHT)
-			arrow_marker.position = Vector2(18,5)
+			arrow_marker.position = Vector2(18,6)
 		"left":
 			arrow_instance.setup(Vector2.LEFT)
-			arrow_marker.position = Vector2(-18,5)
+			arrow_marker.position = Vector2(-18,6)
 		"up":
 			arrow_instance.setup(Vector2.UP)
 			arrow_marker.position = Vector2(0,-17)

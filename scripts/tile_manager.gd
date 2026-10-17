@@ -12,9 +12,11 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	check_floor()
+	if level_manager.is_level_ready():
+		check_floor()
 
 func check_floor() -> void:
+	
 	current_tile = level_manager.get_current_tile()
 	
 	if last_tile and current_tile != last_tile:

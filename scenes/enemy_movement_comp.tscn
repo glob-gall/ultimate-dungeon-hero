@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dvkc6e6qcw3l5"]
+
+[ext_resource type="Script" uid="uid://b3htjgh5xl27l" path="res://scenes/enemy_movement_comp.gd" id="1_387tu"]
+
+[node name="EnemyMovementComp" type="Node2D" unique_id=2047154226]
+script = ExtResource("1_387tu")
+
+[node name="Side1" type="Marker2D" parent="." unique_id=898782194]
+position = Vector2(-100, 0)
+
+[node name="Side2" type="Marker2D" parent="." unique_id=454264795]
+position = Vector2(100, 0)

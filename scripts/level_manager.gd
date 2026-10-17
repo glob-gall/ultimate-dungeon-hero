@@ -16,6 +16,8 @@ func _ready() -> void:
 	current_level_number = 1
 	render_level()
 
+func is_level_ready() -> bool:
+	return current_level != null and current_level.is_inside_tree()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
@@ -43,6 +45,9 @@ func set_level(level:int,door_id:int):
 	render_level()
 	level_change.emit()
 
+func reset_level() ->void:
+	render_level()
+	level_change.emit()
 
 func _on_level_change_requested(target_level: int, target_door_id:int) -> void:
 	print("MANAGER _on_level_change_requested " + str(target_level)+"  " + str(target_door_id))

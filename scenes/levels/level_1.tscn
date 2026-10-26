@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://rawod63w06lu" path="res://scripts/level_map.gd" id="4_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://c7uw2sud6wojj" path="res://scenes/door.tscn" id="4_x42e6"]
 [ext_resource type="PackedScene" uid="uid://dhxvu3mfwb1l8" path="res://scenes/exploder.tscn" id="7_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://dl86i33na24nd" path="res://scenes/gargoyle.tscn" id="8_s8va5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aamu6"]
 texture = ExtResource("1_aamu6")
@@ -88,6 +89,10 @@ position = Vector2(-60, 0)
 
 [node name="Side2" parent="Exploder/EnemyMovementComp" parent_id_path=PackedInt32Array(1608915116, 1525123644) index="1" unique_id=454264795]
 position = Vector2(94, 0)
+
+[node name="Gargoyle" parent="." unique_id=784916627 instance=ExtResource("8_s8va5")]
+position = Vector2(301.33334, 111.666664)
+fire_timer = 3.0
 
 [editable path="Exploder"]
 [editable path="Exploder/EnemyMovementComp"]

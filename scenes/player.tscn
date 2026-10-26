@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://crjbs1rcq2cy1" path="res://assets/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cw2ohm1ur78d2" path="res://scripts/player.gd" id="1_g2els"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4otl"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 224, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(0, 0, 32, 32)
@@ -149,6 +153,14 @@ region = Rect2(64, 192, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t53qn"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4otl")
+}],
+"loop": 1,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g2els")
@@ -330,12 +342,12 @@ size = Vector2(18, 13)
 [node name="Player" type="CharacterBody2D" unique_id=1608034275 groups=["player"]]
 z_index = 10
 y_sort_enabled = true
-collision_mask = 21
+collision_mask = 22
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=442836406]
 sprite_frames = SubResource("SpriteFrames_t53qn")
-animation = &"no_arrow_right"
+animation = &"dead"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=36979577]
 collision_mask = 9

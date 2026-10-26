@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://dfiruu2urjqtk" path="res://scripts/exploder.gd" id="1_yvaxj"]
 [ext_resource type="PackedScene" uid="uid://dvkc6e6qcw3l5" path="res://scenes/enemy_movement_comp.tscn" id="3_rhnos"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t53qn"]
+size = Vector2(26, 10)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_13rpn"]
 atlas = ExtResource("1_13rpn")
 region = Rect2(0, 64, 32, 32)
@@ -93,7 +96,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"explode",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -127,17 +130,47 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Exploder" type="CharacterBody2D" unique_id=1608915116]
-collision_layer = 2
-collision_mask = 20
+[sub_resource type="CircleShape2D" id="CircleShape2D_t53qn"]
+radius = 31.0
+
+[node name="Exploder" type="CharacterBody2D" unique_id=1608915116 groups=["enemy"]]
+collision_layer = 0
+collision_mask = 16
 script = ExtResource("1_yvaxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=42838704]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_t53qn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=875083146]
 sprite_frames = SubResource("SpriteFrames_t53qn")
 animation = &"explode"
-autoplay = "idle"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1158401670]
-polygon = PackedVector2Array(-7, -14, 7, -14, 8, -12, 8, -3, 5, -2, 5, 7, 13, 8, 13, 16, 4, 16, 4, 12, 0, 9, -4, 12, -4, 16, -13, 16, -13, 8, -5, 7, -5, -2, -8, -4, -8, -13)
+autoplay = "run"
+frame = 7
+frame_progress = 1.0
 
 [node name="EnemyMovementComp" parent="." unique_id=1525123644 instance=ExtResource("3_rhnos")]
+
+[node name="WonderingTimer" type="Timer" parent="." unique_id=693835219]
+one_shot = true
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=1666950916]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=2040597808]
+shape = SubResource("CircleShape2D_t53qn")
+debug_color = Color(0.9769748, 0, 0.41136557, 0.41960785)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=2030225410]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" unique_id=1158401670]
+polygon = PackedVector2Array(-7, -14, 7, -14, 8, -12, 8, -3, 5, -2, 5, 7, 13, 8, 13, 16, 4, 16, 4, 12, 0, 9, -4, 12, -4, 16, -13, 16, -13, 8, -5, 7, -5, -2, -8, -4, -8, -13)
+
+[connection signal="timeout" from="WonderingTimer" to="." method="_on_wondering_timer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+
+[editable path="EnemyMovementComp"]

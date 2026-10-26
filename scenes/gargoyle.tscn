@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dl86i33na24nd"]
+
+[ext_resource type="Texture2D" uid="uid://inec0aj8f23v" path="res://assets/enemies/gargoyle.png" id="1_1spld"]
+[ext_resource type="Script" uid="uid://bbhagowk88kn8" path="res://scenes/gargoyle.gd" id="1_vbiot"]
+
+[node name="Gargoyle" type="Node2D" unique_id=784916627]
+script = ExtResource("1_vbiot")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=59375278]
+texture = ExtResource("1_1spld")
+
+[node name="MarkerRight" type="Marker2D" parent="." unique_id=1295571499]
+position = Vector2(18, 0)
+
+[node name="MarkerLeft" type="Marker2D" parent="." unique_id=1056574616]
+position = Vector2(-18, 0)
+
+[node name="MarkerUp" type="Marker2D" parent="." unique_id=1211273854]
+position = Vector2(0, -18)
+
+[node name="MarkerDown" type="Marker2D" parent="." unique_id=1361934999]
+position = Vector2(0, 18)
+
+[node name="Timer" type="Timer" parent="." unique_id=1996523273 groups=["timers"]]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

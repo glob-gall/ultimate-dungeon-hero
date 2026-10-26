@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bo12eg4ak2nqy" path="res://scenes/player.tscn" id="4_8qukl"]
 [ext_resource type="Script" uid="uid://rawod63w06lu" path="res://scripts/level_map.gd" id="4_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://c7uw2sud6wojj" path="res://scenes/door.tscn" id="5_3p04p"]
+[ext_resource type="PackedScene" uid="uid://dhxvu3mfwb1l8" path="res://scenes/exploder.tscn" id="7_ibugp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aamu6"]
 texture = ExtResource("3_ibugp")
@@ -78,3 +79,6 @@ position = Vector2(400.33334, 48)
 door_id = 3
 target_door_id = 4
 target_level_number = 3
+
+[node name="Exploder" parent="." unique_id=1608915116 instance=ExtResource("7_ibugp")]
+position = Vector2(179.66667, 60.666664)

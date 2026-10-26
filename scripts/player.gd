@@ -3,12 +3,12 @@ extends CharacterBody2D
 
 const ARROW = preload("res://scenes/arrow.tscn")
 
-const SPEED = 450.0
+const SPEED = 250.0
 var last_direction: Vector2 = Vector2.RIGHT
 var direction_name = "right"
 var current_action = "idle"
 var arrow_qnt = 4
-
+var is_alive = true
 var is_aiming:bool = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -17,21 +17,22 @@ var is_aiming:bool = false
 
 
 func _physics_process(_delta: float) -> void:
-	direction_name = _get_direction(last_direction)
-	
-	if Input.is_action_just_pressed("shoot"):
-		print('SHOOT')
-		aim_shoot()
-	if Input.is_action_just_released("shoot"):
-		shoot()
+	if is_alive:
+		direction_name = _get_direction(last_direction)
 		
-	if is_aiming:
-		velocity = Vector2.ZERO
-		return
-	
-	_handle_moviment()
-	_play_animation(direction_name)
-	move_and_slide()
+		if Input.is_action_just_pressed("shoot"):
+			print('SHOOT')
+			aim_shoot()
+		if Input.is_action_just_released("shoot"):
+			shoot()
+			
+		if is_aiming:
+			velocity = Vector2.ZERO
+			return
+		
+		_handle_moviment()
+		_play_animation(direction_name)
+		move_and_slide()
 
 func _handle_moviment() -> void:
 	var direction:= Input.get_vector('left','right','up','down')	
@@ -101,3 +102,11 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("arrow"):
 		area.remove()
 		arrow_qnt+=1
+
+func die() -> void:
+	is_alive = false
+	animated_sprite_2d.play("dead")
+	
+	
+	
+	

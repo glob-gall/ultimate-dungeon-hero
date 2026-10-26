@@ -1,5 +1,5 @@
 class_name Arrow
-extends Node2D
+extends Area2D
 
 const SPEED: int = 300
 @export var hit: bool = false
@@ -21,5 +21,8 @@ func remove() -> void:
 		queue_free()
 
 
-func _on_body_entered(_body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
 	hit=true
+
+func hit_enemy() -> void:
+	hit = true

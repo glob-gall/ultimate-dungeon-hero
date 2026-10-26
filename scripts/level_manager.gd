@@ -50,9 +50,11 @@ func reset_level() ->void:
 	level_change.emit()
 
 func _on_level_change_requested(target_level: int, target_door_id:int) -> void:
-	print("MANAGER _on_level_change_requested " + str(target_level)+"  " + str(target_door_id))
-	# deferred, because we're inside a physics callback (body_entered)
 	call_deferred("set_level", target_level,target_door_id)
 
 func get_current_tile() -> Vector2i:
 	return current_level.get_player_current_tile()
+
+func stop_all_timers():
+	for timer in get_tree().get_nodes_in_group("timer"):
+		timer.stop()

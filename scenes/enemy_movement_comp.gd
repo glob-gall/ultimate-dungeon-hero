@@ -1,13 +1,14 @@
 class_name EnemyMovementComp extends Node2D
 
-#@onready var side_1: Marker2D = $Side1
-#@onready var side_2: Marker2D = $Side2
+signal side_reached()
+@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 @onready var side_1: Vector2
 @onready var side_2: Vector2
 @onready var current_side: Vector2
 
 @export var SPEED: float = 100.0
+
 
 #var current_side: Marker2D
 
@@ -27,6 +28,7 @@ func _ready() -> void:
 	
 func get_direction() -> Vector2:
 	if _side_reached():
+		side_reached.emit()
 		_change_side()
 	var direction = (current_side - body.global_position).normalized()
 	var body_position = direction * SPEED

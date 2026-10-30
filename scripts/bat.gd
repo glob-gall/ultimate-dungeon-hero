@@ -7,13 +7,30 @@ var state:STATE = STATE.WALKING
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hurtbox: Area2D = $Hurtbox
 
+enum ZigZag {X,Y}
+@export var zigzag_dir:ZigZag = ZigZag.X
+@export var zigzag_max: float = 100.0
+@export var zigzag_speed: float = 200.0
+
+var zigzag:float = 0.0
+var zigzag_side: int = 1
 
 func _physics_process(delta: float) -> void:
+
+	zigzag += zigzag_speed * zigzag_side * delta
+	if absf(zigzag) >= zigzag_max:
+		zigzag_side *= -1
+	
 	if state == STATE.WONDERING:
 		velocity = Vector2.ZERO
 	elif state == STATE.WALKING:
 		var direction = enemy_movement_comp.get_direction()
 		velocity = direction
+		#zigzag
+		if zigzag_dir == ZigZag.X:
+			velocity.x += zigzag
+		else:
+			velocity.y += zigzag
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()

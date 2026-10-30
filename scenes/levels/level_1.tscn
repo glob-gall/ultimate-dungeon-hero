@@ -87,3 +87,5 @@ fire_timer = 3.0
 
 [node name="Bat" parent="." unique_id=490996768 instance=ExtResource("8_dga24")]
 position = Vector2(233, 80.333336)
+zigzag_dir = 1
+zigzag_max = 200.0

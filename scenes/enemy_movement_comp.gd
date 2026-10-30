@@ -33,7 +33,6 @@ func get_direction() -> Vector2:
 	var direction = (current_side - body.global_position).normalized()
 	var body_position = direction * SPEED
 	
-	
 	return body_position
 
 func _side_reached() -> bool:

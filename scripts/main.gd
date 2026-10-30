@@ -13,3 +13,5 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
 		print("reset")
 		level_manager.reset_level()
+	if Input.is_action_just_pressed("pause"):
+		level_manager.show_main_menu()

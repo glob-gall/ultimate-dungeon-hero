@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c77w2ep7etume"]
 
 [ext_resource type="Texture2D" uid="uid://sktompmqsysb" path="res://assets/enemies/slime.png" id="1_371uh"]
+[ext_resource type="Script" uid="uid://ccha8h18wrxaf" path="res://scenes/slime.gd" id="1_n6pvg"]
+[ext_resource type="PackedScene" uid="uid://dvkc6e6qcw3l5" path="res://scenes/enemy_movement_comp.tscn" id="3_pjw23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2gj0"]
 atlas = ExtResource("1_371uh")
@@ -37,14 +39,6 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnioy"]
 atlas = ExtResource("1_371uh")
 region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2xjuo"]
-atlas = ExtResource("1_371uh")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a02ik"]
-atlas = ExtResource("1_371uh")
-region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu8ps"]
 atlas = ExtResource("1_371uh")
@@ -91,12 +85,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_vnioy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2xjuo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a02ik")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_pu8ps")
 }],
 "loop": 1,
@@ -105,17 +93,41 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fuj3"]
-size = Vector2(21.666666, 15.666667)
+size = Vector2(21.666666, 12.666667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t53qn"]
+size = Vector2(20, 4.666666)
 
 [node name="Slime" type="CharacterBody2D" unique_id=677408012]
-scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_n6pvg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1272686639]
 sprite_frames = SubResource("SpriteFrames_t53qn")
 animation = &"run"
-frame = 2
-frame_progress = 0.31555724
+autoplay = "run"
+frame_progress = 0.95272726
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1508020992]
-position = Vector2(-0.16666651, 5.5)
+[node name="EnemyMovementComp" parent="." unique_id=2047154226 instance=ExtResource("3_pjw23")]
+SPEED = 50.0
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=911058449 groups=["enemy"]]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1508020992]
+position = Vector2(0, 7.3333335)
 shape = SubResource("RectangleShape2D_0fuj3")
+debug_color = Color(0.8891238, 0.17480946, 0.68423265, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1614635407]
+position = Vector2(0, 13.333334)
+shape = SubResource("RectangleShape2D_t53qn")
+
+[node name="WonderingTimer" type="Timer" parent="." unique_id=147504868]
+one_shot = true
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="WonderingTimer" to="." method="_on_wondering_timer_timeout"]

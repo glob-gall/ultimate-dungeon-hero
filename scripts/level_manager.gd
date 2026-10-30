@@ -1,6 +1,9 @@
 class_name LevelManager
 extends Node
 
+
+const MENU := preload("res://scenes/levels/level_screen.tscn")
+var main_menu: MainMenu
 @onready var main: Node2D = $".."
 
 signal level_change()
@@ -10,11 +13,14 @@ const BASE_LEVEL_PATH := "res://scenes/levels/level_" # 1.tscn
 var current_level_number: int
 var current_level: Level
 
+var is_paused:bool
+
 var player_spawn_id: int = -1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_level_number = 1
 	render_level()
+	show_main_menu.call_deferred()
 
 func is_level_ready() -> bool:
 	return current_level != null and current_level.is_inside_tree()
@@ -58,3 +64,20 @@ func get_current_tile() -> Vector2i:
 func stop_all_timers():
 	for timer in get_tree().get_nodes_in_group("timer"):
 		timer.stop()
+		
+func show_main_menu() -> void:
+	if is_paused:
+		return
+		
+	is_paused = true
+	get_tree().paused = true
+	main_menu = MENU.instantiate() as MainMenu
+	main_menu.start_game.connect(close_main_menu)
+	add_child(main_menu)
+
+func close_main_menu():
+	is_paused=false
+	if main_menu:
+		main_menu.queue_free()
+		main_menu = null
+	get_tree().paused=false

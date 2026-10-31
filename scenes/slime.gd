@@ -64,3 +64,6 @@ func start_wondering():
 		state = STATE.WONDERING
 		play_animation()
 		wondering_timer.start()
+
+func is_dead() -> bool:
+	return state == STATE.DEAD

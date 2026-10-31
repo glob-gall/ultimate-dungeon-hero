@@ -16,7 +16,6 @@ func _process(_delta: float) -> void:
 		check_floor()
 
 func check_floor() -> void:
-	
 	current_tile = level_manager.get_current_tile()
 	
 	if last_tile and current_tile != last_tile:
@@ -26,3 +25,6 @@ func check_floor() -> void:
 
 func level_changed():
 	last_tile= Vector2i(99999,99999)
+
+func check_door() -> void:
+	level_manager.current_level.door

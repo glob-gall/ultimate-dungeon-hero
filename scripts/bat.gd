@@ -58,3 +58,6 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.die()
+
+func is_dead() -> bool:
+	return state == STATE.DEAD

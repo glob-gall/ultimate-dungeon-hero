@@ -4,7 +4,9 @@ extends Node2D
 signal level_change_request(target_level_number: int)
 @onready var player: Player = $Player
 @onready var map:LevelMap = $map
+@export var door_tiles: Array[Vector2]
 
+var all_enemy_dead:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for door:Door in find_children("*","Door",true,false):
@@ -14,10 +16,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	open_doors_if_all_dead()
 
 func _on_door_entered(target_level_number:int, target_door_id:int) -> void:
-	level_change_request.emit(target_level_number,target_door_id)
+	if all_enemy_dead:
+		level_change_request.emit(target_level_number,target_door_id)
 
 func place_player_at_door(door_id:int) -> void:
 	print("place_player_at_door")
@@ -34,3 +37,10 @@ func get_player_current_tile():
 		if map:
 			return map.get_tile(player_position)
 		push_warning('MAP NOT FOUND')
+		
+func open_doors_if_all_dead() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if !enemy.is_dead():
+			return
+	map.open_doors(door_tiles)
+	all_enemy_dead=true

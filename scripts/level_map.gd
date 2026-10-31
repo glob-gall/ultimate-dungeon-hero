@@ -16,5 +16,9 @@ func get_tile(at:Vector2) -> Vector2i:
 func replace_tile(at:Vector2i) ->void:
 	if get_cell_atlas_coords(at) == Vector2i(3,0):
 		set_cell(at, 0, Vector2i(3, 1)) 
-
 		
+
+func open_doors(doors:Array[Vector2]) -> void:
+	for at in doors:
+		if get_cell_atlas_coords(at) == Vector2i(0,0):
+			set_cell(at, 0, Vector2i(2,0)) 

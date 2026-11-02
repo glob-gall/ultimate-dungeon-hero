@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://crjbs1rcq2cy1" path="res://assets/player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cw2ohm1ur78d2" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://bpj4yo64s5xfh" path="res://scenes/hud.tscn" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4otl"]
 atlas = ExtResource("1_3vyb7")
@@ -371,5 +372,7 @@ shape = SubResource("RectangleShape2D_0abih")
 
 [node name="ArrowMarker" type="Marker2D" parent="." unique_id=1211728577]
 position = Vector2(-18, 5)
+
+[node name="Hud" parent="." unique_id=829392201 instance=ExtResource("3_qhqgy")]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

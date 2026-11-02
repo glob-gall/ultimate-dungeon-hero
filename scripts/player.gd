@@ -1,21 +1,26 @@
 class_name Player
 extends CharacterBody2D
 
+
 const ARROW = preload("res://scenes/arrow.tscn")
+
 
 const SPEED = 250.0
 var last_direction: Vector2 = Vector2.RIGHT
 var direction_name = "right"
 var current_action = "idle"
-var arrow_qnt = 4
 var is_alive = true
 var is_aiming:bool = false
 
+@export var arrow_qnt: int = 4
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var step: CollisionShape2D = $Step
 @onready var arrow_marker: Marker2D = $ArrowMarker
+@onready var hud: Hud = $Hud
 
-
+func _ready() -> void:
+	hud.set_arrow_qnt(arrow_qnt)
+	
 func _physics_process(_delta: float) -> void:
 	if is_alive:
 		direction_name = _get_direction(last_direction)
@@ -78,6 +83,7 @@ func shoot() -> void:
 	if arrow_qnt == 0:
 		return
 	arrow_qnt-=1
+	hud.set_arrow_qnt(arrow_qnt)
 	var arrow_instance:Arrow = ARROW.instantiate()
 	get_tree().root.add_child(arrow_instance)
 	match direction_name:
@@ -102,11 +108,13 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("arrow"):
 		area.remove()
 		arrow_qnt+=1
+		hud.set_arrow_qnt(arrow_qnt)
 
 func die() -> void:
 	is_alive = false
 	animated_sprite_2d.play("dead")
 	
+
 	
 	
 	

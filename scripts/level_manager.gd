@@ -14,7 +14,6 @@ var current_level_number: int
 var current_level: Level
 
 var is_paused:bool
-
 var player_spawn_id: int = -1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

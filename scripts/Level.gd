@@ -1,7 +1,7 @@
 class_name Level
 extends Node2D
 
-signal level_change_request(target_level_number: int)
+signal level_change_request(target_level_number: int,target_door_id:int)
 @onready var player: Player = $Player
 @onready var map:LevelMap = $map
 @export var door_tiles: Array[Vector2]

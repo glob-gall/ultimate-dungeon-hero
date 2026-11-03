@@ -26,7 +26,6 @@ func _physics_process(_delta: float) -> void:
 		direction_name = _get_direction(last_direction)
 		
 		if Input.is_action_just_pressed("shoot"):
-			print('SHOOT')
 			aim_shoot()
 		if Input.is_action_just_released("shoot"):
 			shoot()
@@ -104,7 +103,6 @@ func shoot() -> void:
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	print(area)
 	if area.is_in_group("arrow"):
 		area.remove()
 		arrow_qnt+=1

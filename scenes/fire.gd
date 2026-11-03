@@ -26,9 +26,12 @@ func _apply_fire_damage() ->void :
 	for area in get_overlapping_areas():
 		if area.is_in_group("arrow"):
 			area.remove()
-	for body in get_overlapping_bodies():
-		if body.is_in_group("player"):
-			body.die()
+		if area.is_in_group("player_hurtbox"):
+			var player:Player = area.get_parent()
+			player.die()
+	#for body in get_overlapping_bodies():
+	#	if body.is_in_group("player"):
+	#		body.die()
 	
 
 	

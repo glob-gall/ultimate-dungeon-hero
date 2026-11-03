@@ -13,10 +13,9 @@ enum STATE {WALKING,WONDERING,DEAD}
 var state:STATE = STATE.WALKING 
 
 func _ready() -> void:
-	print("EXPLODER READY")
 	enemy_movement_comp.side_reached.connect(start_wondering)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if state == STATE.WONDERING:
 		velocity = Vector2.ZERO
 	elif state == STATE.WALKING:
@@ -62,14 +61,12 @@ func _explode() -> void:
 	
 func _apply_explosion_damage() ->void :
 	for area in explosion_area.get_overlapping_areas():
-		print(area)
 
 		if area.is_in_group("arrow"):
 			area.remove()
-	for body in explosion_area.get_overlapping_bodies():
-		print(body)
-		if body.is_in_group("player"):
-			body.die()
+		if area.is_in_group("player_hurtbox"):
+			var player:Player = area.get_parent()
+			player.die()
 	
 	
 	
@@ -80,11 +77,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("arrow"):
 		area.hit_enemy()
 		hit_by_arrow()
-
-
-func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if area.is_in_group("player_hurtbox"):
 		_explode()
+
 		
 func is_dead() -> bool:
 	return state == STATE.DEAD

@@ -171,6 +171,5 @@ polygon = PackedVector2Array(-7, -14, 7, -14, 8, -12, 8, -3, 5, -2, 5, 7, 13, 8,
 
 [connection signal="timeout" from="WonderingTimer" to="." method="_on_wondering_timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 
 [editable path="EnemyMovementComp"]

@@ -12,5 +12,4 @@ func _ready() -> void:
 #	pass
 
 func set_arrow_qnt(qnt:int) ->void:
-	print("set_arrow_qnt" + str(qnt))
 	arrows.text = "X "+ str(qnt)

@@ -36,14 +36,14 @@ func _die():
 func hit_by_arrow() -> void:
 	_die()
 
-func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		body.die()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("arrow"):
 		area.hit_enemy()
 		hit_by_arrow()
+	if area.is_in_group("player_hurtbox"):
+		var player:Player = area.get_parent()
+		player.die()
 
 
 func play_animation():

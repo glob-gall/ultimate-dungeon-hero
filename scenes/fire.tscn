@@ -58,6 +58,7 @@ size = Vector2(20, 32)
 
 [node name="Fire" type="Area2D" unique_id=1721857537]
 scale = Vector2(3, 3)
+collision_mask = 9
 script = ExtResource("1_xqmqg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1185075396]

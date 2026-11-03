@@ -36,7 +36,6 @@ func render_level():
 	
 	var scene: PackedScene = load(level_path)
 	current_level = scene.instantiate() as Level
-	print(current_level)
 	add_child.call_deferred(current_level)
 	current_level.level_change_request.connect(_on_level_change_requested)
 	

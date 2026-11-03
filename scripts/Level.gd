@@ -23,11 +23,9 @@ func _on_door_entered(target_level_number:int, target_door_id:int) -> void:
 		level_change_request.emit(target_level_number,target_door_id)
 
 func place_player_at_door(door_id:int) -> void:
-	print("place_player_at_door")
 		
 	for door:Door in find_children("*","Door",true,false):
 		if door.door_id == door_id:
-			print("door_id:  " + str(door.door_id))
 			player.global_position = door.get_spawn_position()
 			return
 	

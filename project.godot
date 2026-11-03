@@ -28,6 +28,7 @@ player=""
 arrow=""
 enemy=""
 timer=""
+player_hurtbox=""
 
 [input]
 

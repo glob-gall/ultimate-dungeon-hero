@@ -17,8 +17,10 @@ func _ready() -> void:
 	var fire_rotation = 0
 	timer.wait_time = fire_timer
 	for marker in markers:
-		var fire_instance:Fire = FIRE.instantiate()	
-		get_tree().root.add_child(fire_instance)
+		var fire_instance:Fire = FIRE.instantiate()
+		fire_instance.z_as_relative = false
+		fire_instance.z_index = 10
+		get_tree().current_scene.add_child(fire_instance)
 		fire_instance.global_position = marker.global_position
 		fire_instance.rotation = deg_to_rad(fire_rotation)
 		fire_rotation+=90
@@ -30,7 +32,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(_delta: float) -> void:
 #	pass
-
+func remove() -> void:
+	queue_free()
 
 func _on_timer_timeout() -> void:
 	for fire in fires:

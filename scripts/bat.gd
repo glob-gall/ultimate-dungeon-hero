@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum STATE {WALKING,WONDERING,DEAD}
+enum STATE {WALKING,DEAD}
 var state:STATE = STATE.WALKING 
 
 @onready var enemy_movement_comp: EnemyMovementComp = $EnemyMovementComp
@@ -16,23 +16,25 @@ var zigzag:float = 0.0
 var zigzag_side: int = 1
 
 func _physics_process(delta: float) -> void:
-
+	if state == STATE.DEAD:
+		velocity = Vector2.ZERO
+		return
+		
+	var direction = enemy_movement_comp.get_direction()
 	zigzag += zigzag_speed * zigzag_side * delta
+		
 	if absf(zigzag) >= zigzag_max:
+		zigzag = clampf(zigzag, -zigzag_max, zigzag_max)
 		zigzag_side *= -1
-	
-	if state == STATE.WONDERING:
-		velocity = Vector2.ZERO
-	elif state == STATE.WALKING:
-		var direction = enemy_movement_comp.get_direction()
-		velocity = direction
-		#zigzag
-		if zigzag_dir == ZigZag.X:
-			velocity.x += zigzag
-		else:
-			velocity.y += zigzag
+		
+	velocity = direction
+	#zigzag
+	if zigzag_dir == ZigZag.X:
+		velocity.x += zigzag
 	else:
-		velocity = Vector2.ZERO
+		velocity.y += zigzag
+	
+	
 	move_and_slide()
 	
 
@@ -41,7 +43,8 @@ func _die():
 	state = STATE.DEAD
 	animated_sprite_2d.play("die")
 	set_physics_process(false)
-	hurtbox.set_deferred("disabled",true)
+	hurtbox.set_deferred("monitoring",false)
+	hurtbox.set_deferred("monitorable",false)
 	await animated_sprite_2d.animation_finished
 	queue_free()
 	

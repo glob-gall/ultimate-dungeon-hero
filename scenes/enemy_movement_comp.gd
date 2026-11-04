@@ -9,7 +9,6 @@ signal side_reached()
 
 @export var SPEED: float = 100.0
 
-
 #var current_side: Marker2D
 
 var body: CharacterBody2D
@@ -36,8 +35,8 @@ func get_direction() -> Vector2:
 	return body_position
 
 func _side_reached() -> bool:
-	var distance_from_target = body.global_position.distance_to(current_side)
-	if distance_from_target < 18:
+	var to_target = body.global_position.distance_to(current_side)
+	if to_target < 18:
 		return true
 	return false
 	

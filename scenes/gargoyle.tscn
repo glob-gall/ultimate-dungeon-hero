@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://inec0aj8f23v" path="res://assets/enemies/gargoyle.png" id="1_1spld"]
 [ext_resource type="Script" uid="uid://bbhagowk88kn8" path="res://scenes/gargoyle.gd" id="1_vbiot"]
 
-[node name="Gargoyle" type="Node2D" unique_id=784916627]
+[node name="Gargoyle" type="Node2D" unique_id=784916627 groups=["fixed_enemy"]]
 script = ExtResource("1_vbiot")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=59375278]

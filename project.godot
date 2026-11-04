@@ -29,6 +29,7 @@ arrow=""
 enemy=""
 timer=""
 player_hurtbox=""
+fixed_enemy=""
 
 [input]
 

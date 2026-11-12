@@ -98,7 +98,7 @@ size = Vector2(21.666666, 12.666667)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t53qn"]
 size = Vector2(20, 4.666666)
 
-[node name="Slime" type="CharacterBody2D" unique_id=677408012]
+[node name="Slime" type="CharacterBody2D" unique_id=677408012 groups=["enemy"]]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_n6pvg")
@@ -112,7 +112,7 @@ frame_progress = 0.95272726
 [node name="EnemyMovementComp" parent="." unique_id=2047154226 instance=ExtResource("3_pjw23")]
 SPEED = 50.0
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=911058449 groups=["enemy"]]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=911058449]
 collision_layer = 2
 collision_mask = 9
 

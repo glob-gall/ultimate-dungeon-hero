@@ -8,7 +8,8 @@ signal door_entered(target_level_number: int, target_door_id:int)
 
 @export var door_id: int = 0
 @export var target_door_id: int = 0
-@export_range(1, 3) var target_level_number: int 
+#@export_range(1, 3)
+@export var target_level_number: int 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # body_entered.connect(_on_body_entered)

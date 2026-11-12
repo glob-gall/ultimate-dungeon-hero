@@ -335,10 +335,10 @@ animations = [{
 size = Vector2(15.999999, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g85n4"]
-size = Vector2(6, 3)
+size = Vector2(8, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0abih"]
-size = Vector2(11, 13)
+[sub_resource type="CircleShape2D" id="CircleShape2D_qsp8v"]
+radius = 7.5166483
 
 [node name="Player" type="CharacterBody2D" unique_id=1608034275 groups=["player"]]
 z_index = 10
@@ -368,7 +368,7 @@ position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1252501622]
 position = Vector2(-0.5, 11.5)
-shape = SubResource("RectangleShape2D_0abih")
+shape = SubResource("CircleShape2D_qsp8v")
 
 [node name="ArrowMarker" type="Marker2D" parent="." unique_id=1211728577]
 position = Vector2(-18, 5)

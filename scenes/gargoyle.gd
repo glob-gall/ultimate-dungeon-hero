@@ -33,6 +33,8 @@ func _ready() -> void:
 #func _process(_delta: float) -> void:
 #	pass
 func remove() -> void:
+	for fire in fires:
+		fire.queue_free()
 	queue_free()
 
 func _on_timer_timeout() -> void:

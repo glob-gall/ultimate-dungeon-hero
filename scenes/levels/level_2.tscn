@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cixe36jchd7k8" path="res://scripts/level_2.gd" id="1_l37oo"]
 [ext_resource type="TileSet" uid="uid://xwjeqntnt3pr" path="res://assets/tiles/background.tres" id="2_qpwj6"]
-[ext_resource type="Texture2D" uid="uid://nvrx3cqadsu4" path="res://assets/tiles/structures.png" id="3_ibugp"]
+[ext_resource type="TileSet" uid="uid://dajcnkcomc3wb" path="res://assets/tiles/structures.tres" id="3_qsp8v"]
 [ext_resource type="PackedScene" uid="uid://bo12eg4ak2nqy" path="res://scenes/player.tscn" id="4_8qukl"]
 [ext_resource type="Script" uid="uid://rawod63w06lu" path="res://scripts/level_map.gd" id="4_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://c7uw2sud6wojj" path="res://scenes/door.tscn" id="5_3p04p"]
@@ -10,50 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dhxvu3mfwb1l8" path="res://scenes/exploder.tscn" id="7_ibugp"]
 [ext_resource type="PackedScene" uid="uid://cr5a1qncfqhts" path="res://scenes/bat.tscn" id="8_nt80m"]
 [ext_resource type="PackedScene" uid="uid://c77w2ep7etume" path="res://scenes/slime.tscn" id="9_brxtv"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aamu6"]
-texture = ExtResource("3_ibugp")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:0/0 = 0
-3:0/0 = 0
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -16, 8, -16, 8, 8, -8, 8)
-0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:4/0 = 0
-3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-0:4/0 = 0
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-
-[sub_resource type="TileSet" id="TileSet_t53qn"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 3
-sources/0 = SubResource("TileSetAtlasSource_aamu6")
 
 [node name="level_2" type="Node2D" unique_id=969106021]
 scale = Vector2(3, 3)
@@ -66,7 +22,7 @@ tile_set = ExtResource("2_qpwj6")
 
 [node name="map" type="TileMapLayer" parent="." unique_id=163070924]
 tile_map_data = PackedByteArray("AAAIAAIAAAADAAAAAAAIAAEAAAAAAAAAAAAIAAAAAAAAAAQAAAAIAAMAAAADAAMAAAAHAAIAAAADAAAAAAAJAAIAAAADAAAAAAAOAAIAAAADAAAAAAAOAAEAAAAAAAAAAAAOAAAAAAAAAAQAAAANAAAAAAAAAAEAAAANAAEAAAAAAAMAAAAPAAAAAAACAAEAAAAPAAEAAAACAAMAAAAIAAQAAAADAAAAAAAHAAQAAAADAAAAAAAGAAQAAAADAAAAAAAFAAQAAAADAAAAAAAEAAQAAAADAAAAAAADAAQAAAADAAAAAAADAAUAAAADAAAAAAAEAAUAAAADAAAAAAAFAAUAAAADAAAAAAAGAAUAAAADAAAAAAAHAAUAAAADAAAAAAAIAAUAAAADAAAAAAADAAYAAAADAAAAAAAEAAYAAAADAAAAAAAFAAYAAAADAAAAAAAGAAYAAAADAAAAAAAHAAYAAAADAAAAAAAIAAYAAAADAAAAAAANAAUAAAADAAAAAAAOAAUAAAADAAAAAAAPAAUAAAADAAAAAAAPAAYAAAADAAAAAAAPAAcAAAADAAAAAAAOAAcAAAADAAAAAAANAAcAAAADAAAAAAANAAYAAAADAAAAAAAOAAYAAAADAAAAAAAHAAEAAAABAAMAAAAJAAAAAAAAAAQAAAAJAAEAAAABAAMAAAAGAAAAAAAAAAEAAAAKAAAAAAACAAEAAAAHAAAAAAAAAAQAAAAGAAEAAAAAAAMAAAAKAAEAAAACAAMAAAAGAAIAAAADAAAAAAAFAAIAAAADAAAAAAAEAAIAAAADAAAAAAADAAIAAAADAAAAAAA=")
-tile_set = SubResource("TileSet_t53qn")
+tile_set = ExtResource("3_qsp8v")
 script = ExtResource("4_qpwj6")
 
 [node name="bridges" type="TileMapLayer" parent="." unique_id=1894276801]
